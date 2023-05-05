@@ -59,6 +59,9 @@ class DataProcess {
     smallerCheck() {
         this.smaller = this._data.filter((a) => a<50);
     }
+    static toJson(y) {
+        return JSON.stringify(y);
+    }
 
 }
 
@@ -72,3 +75,4 @@ dataObj.smallerCheck();
 console.log(DataProcess.getOdd(numbers))
 console.log(DataProcess.getEven(numbers))
 console.log(dataObj.smaller)
+console.log(DataProcess.toJson(dataObj))
