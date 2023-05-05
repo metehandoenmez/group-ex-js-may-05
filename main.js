@@ -16,4 +16,59 @@ function convert(data, actionCb) {
     return actionCb(data);
 }
 
+function actionCallback(arg) {
+    return JSON.parse(arg);
+}
 const convertedData = convert(jsonData, actionCallback);
+
+let numbers = convertedData.data;
+
+class DataProcess {
+    constructor(data) {
+        this._data = data;
+    }
+    sortData() {
+        this._data.sort((a,b) => a-b);
+    }
+    calculateTotal() {
+        this.total = this._data.reduce((a,b) => a+b);
+    }
+    isEven() {
+        if(this.total % 2 === 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    doDouble() {
+        this.doubled = this._data.map((el) => el*2);
+    }
+    static getOdd(arg) {
+        let odds = arg.filter((a) => a%2 !== 0);
+        return odds;
+    }
+    static getEven(arg) {
+        let evens = arg.filter((a) => a%2 === 0);
+        return evens;
+    }
+    printAll() {
+        let x = {"total":this.total, "doubled":this.doubled, "data":this._data}
+        console.log(x);
+    }
+    smallerCheck() {
+        this.smaller = this._data.filter((a) => a<50);
+    }
+
+}
+
+let dataObj = new DataProcess(numbers);
+dataObj.calculateTotal();
+dataObj.sortData();
+dataObj.smallerCheck();
+dataObj.doDouble();
+dataObj.printAll();
+dataObj.smallerCheck();
+console.log(DataProcess.getOdd(numbers))
+console.log(DataProcess.getEven(numbers))
+console.log(dataObj.smaller)
