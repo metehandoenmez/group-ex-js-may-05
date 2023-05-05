@@ -16,4 +16,4 @@ function convert(data, actionCb) {
     return actionCb(data);
 }
 
-const convertedData = convert(data, actionCallback);
+const convertedData = convert(jsonData, actionCallback);
